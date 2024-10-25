@@ -1,0 +1,106 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/global.css";
+
+const pageTitle = "About Me";
+
+const identity = {
+  firstName: "Sarah",
+  country: "Canada",
+  occupation: "Technical Writer",
+  hobbies: ["photography", "birdwatching", "baseball"],
+};
+
+const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Writing Docs"];
+const skillColor = "red";
+const fontWeight = "bold";
+const textCase = "uppercase";
+
+const happy = true;
+const finished = false;
+const goal = 3;
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <h1>{pageTitle}</h1>
+  <p>Here are a few facts about me:</p>
+  <ul>
+    <li>My name is {identity.firstName}.</li>
+    <li>
+      I live in {identity.country} and I work as a {identity.occupation}.
+    </li>
+    {
+      identity.hobbies.length >= 2 && (
+        <li>
+          Two of my hobbies are: {identity.hobbies[0]} and {identity.hobbies[1]}
+        </li>
+      )
+    }
+  </ul>
+  <p>My skills are:</p>
+  <ul>
+    {skills.map((skill) => <li class="skill">{skill}</li>)}
+  </ul>
+
+  {happy && <p>I am happy to be learning Astro!</p>}
+
+  {finished && <p>I finished this tutorial!</p>}
+
+  {
+    goal === 3 ? (
+      <p>My goal is to finish in 3 days.</p>
+    ) : (
+      <p>My goal is not 3 days.</p>
+    )
+  }
+  <section>
+    <div class="carousel">
+      <div class="carousel-track">
+        <img src="/fail.jpg" alt="Image 1" />
+        <img src="/brygg-back.png" alt="Image 2" />
+        <img src="/esp-back.png" alt="Image 3" />
+        <img src="/mellan-back.png" alt="Image 4" />
+        <img src="/fail.jpg" alt="Image 1" />
+        <img src="/brygg-back.png" alt="Image 2" />
+        <img src="/esp-back.png" alt="Image 3" />
+        <img src="/mellan-back.png" alt="Image 4" />
+      </div>
+    </div>
+  </section>
+  <style define:vars={{ skillColor, fontWeight, textCase }}>
+    h1 {
+      color: purple;
+      font-size: 4rem;
+    }
+    .skill {
+      color: var(--skillColor);
+      font-weight: var(--fontWeight);
+      text-transform: var(--textCase);
+    }
+    .carousel {
+      width: 100%; /* Full width */
+      overflow: hidden; /* Hide overflowing images */
+    }
+
+    .carousel-track {
+      display: flex;
+      width: max-content; /* Ensures the track's width adjusts based on its content */
+      animation: scroll 20s linear infinite; /* Smooth continuous scroll */
+    }
+
+    .carousel-track img {
+      width: 25vw; /* Set a relative width so all images adjust to the screen size */
+    }
+
+    @keyframes scroll {
+      0% {
+        transform: translateX(0); /* Start position */
+      }
+      100% {
+        transform: translateX(
+          -100%
+        ); /* Moves the track all the way to the left */
+      }
+    }
+  </style>
+</BaseLayout>

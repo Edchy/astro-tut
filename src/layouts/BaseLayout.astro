@@ -1,0 +1,38 @@
+---
+import "../styles/global.css";
+import Tractor from "../components/Tractor.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+
+const { pageTitle } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nabla:EDPT,EHLT@0..200,0..24&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <Header />
+    <slot />
+    <Footer />
+    <script>
+      import CircleType from "circletype";
+
+      new CircleType(document.getElementById("demo1"));
+      console.log("hello");
+    </script>
+    <script>
+      import "../js/menu.js";
+    </script>
+  </body>
+</html>

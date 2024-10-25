@@ -1,0 +1,20 @@
+---
+import Socials from "./Socials.astro";
+
+const platform = "github";
+const username = "withastro";
+---
+
+<footer>
+  <small>&copy;</small>
+  <Socials platform="github" username="poe" />
+  <Socials platform="facebook" username="poe" />
+  <Socials platform="instagram" username="poe" />
+</footer>
+
+<style>
+  footer {
+    background-color: white;
+    display: flex;
+  }
+</style>
